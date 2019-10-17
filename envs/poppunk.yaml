@@ -1,0 +1,6 @@
+channels:
+- defaults
+- bioconda
+- conda-forge
+dependencies:
+- poppunk=1.1.7

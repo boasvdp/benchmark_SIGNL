@@ -1,6 +1,8 @@
 # Benchmark SIGNL
 This repo contains the Snakemake pipeline used for the benchmarking exercise 2019 of the special interest group for bioinformaticians in medical microbiology in the Netherlands (SIGBMMNL? usually just SIGNL). 
 
+The benchmark entails processing data for 40 Klebsiella pneuomoniae and 40 VRE isolates. Several Dutch institutions will analyse the same dataset and subsequently, methods, results and conclusions will be compared between centres.
+
 ## Installation and dependencies
 The pipeline is meant to run on Linux and has three main dependencies:
 

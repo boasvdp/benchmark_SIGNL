@@ -1,4 +1,4 @@
-IDS, = glob_wildcards("raw_reads/{id}_1.fastq.gz")
+IDS, = glob_wildcards("raw_reads/{id}_R1.fastq.gz")
 
 report: "report/workflow.rst"
 
@@ -27,8 +27,8 @@ rule all:
 
 rule fastp:
 	input:
-		fw = "raw_reads/{sample}_1.fastq.gz",
-		rv = "raw_reads/{sample}_2.fastq.gz"
+		fw = "raw_reads/{sample}_R1.fastq.gz",
+		rv = "raw_reads/{sample}_R2.fastq.gz"
 	output:
 		fw = "ATQT_reads/{sample}_ATQT_R1.fastq.gz",
 		rv = "ATQT_reads/{sample}_ATQT_R2.fastq.gz",
@@ -246,7 +246,8 @@ rule poppunk_K2:
 		mink = "15",
 		kstep = "2",
 		name = "K2",
-		perplexity = "20"
+		perplexity = "20",
+		maxadist = "1"
 	log:
 		"../logs/poppunk_K2.log"
 	threads: 6
@@ -257,7 +258,7 @@ rule poppunk_K2:
 		ls poppunk_temp/* > list_poppunk.txt
 		
 		poppunk --create-db --overwrite --r-files list_poppunk.txt --output {params.name} --threads {threads} --plot-fit 5 --min-k {params.mink} --k-step {params.kstep} 2>&1>{log}
-		poppunk --fit-model --distances {params.name}/{params.name}.dists --ref-db {params.name} --output {params.name} --full-db --K {params.K} --microreact --cytoscape --phandango --grapetree --perplexity {params.perplexity} 2>&1>{log}
+		poppunk --fit-model --distances {params.name}/{params.name}.dists --max-a-dist {params.maxadist} --ref-db {params.name} --output {params.name} --full-db --K {params.K} --microreact --cytoscape --phandango --grapetree --perplexity {params.perplexity} 2>&1>{log}
 		
 		rm -rf poppunk_temp list_poppunk.txt
 		"""
@@ -274,7 +275,8 @@ rule poppunk_K3:
 		mink = "15",
 		kstep = "2",
 		name = "K3",
-		perplexity = "20"
+		perplexity = "20",
+		maxadist = "1"
 	log:
 		"../logs/poppunk_K3.log"
 	threads: 6
@@ -285,7 +287,7 @@ rule poppunk_K3:
 		ls poppunk_temp/* > list_poppunk.txt
 		
 		poppunk --create-db --overwrite --r-files list_poppunk.txt --output {params.name} --threads {threads} --plot-fit 5 --min-k {params.mink} --k-step {params.kstep} 2>&1>{log}
-		poppunk --fit-model --distances {params.name}/{params.name}.dists --ref-db {params.name} --output {params.name} --full-db --K {params.K} --microreact --cytoscape --phandango --grapetree --perplexity {params.perplexity} 2>&1>{log}
+		poppunk --fit-model --distances {params.name}/{params.name}.dists --max-a-dist {params.maxadist} --ref-db {params.name} --output {params.name} --full-db --K {params.K} --microreact --cytoscape --phandango --grapetree --perplexity {params.perplexity} 2>&1>{log}
 		
 		rm -rf poppunk_temp list_poppunk.txt
 		"""
@@ -302,7 +304,8 @@ rule poppunk_K4:
 		mink = "15",
 		kstep = "2",
 		name = "K4",
-		perplexity = "20"
+		perplexity = "20",
+		maxadist = "1"
 	log:
 		"../logs/poppunk_K4.log"
 	threads: 6
@@ -313,7 +316,7 @@ rule poppunk_K4:
 		ls poppunk_temp/* > list_poppunk.txt
 		
 		poppunk --create-db --overwrite --r-files list_poppunk.txt --output {params.name} --threads {threads} --plot-fit 5 --min-k {params.mink} --k-step {params.kstep} 2>&1>{log}
-		poppunk --fit-model --distances {params.name}/{params.name}.dists --ref-db {params.name} --output {params.name} --full-db --K {params.K} --microreact --cytoscape --phandango --grapetree --perplexity {params.perplexity} 2>&1>{log}
+		poppunk --fit-model --distances {params.name}/{params.name}.dists --max-a-dist {params.maxadist} --ref-db {params.name} --output {params.name} --full-db --K {params.K} --microreact --cytoscape --phandango --grapetree --perplexity {params.perplexity} 2>&1>{log}
 		
 		rm -rf poppunk_temp list_poppunk.txt
 		"""

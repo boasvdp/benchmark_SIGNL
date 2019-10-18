@@ -20,3 +20,8 @@ ska_fasta_out
 skesa_out
 summary
 .snakemake
+excluded
+iqtree_out
+poppunk_export.zip
+report.html
+snp-dists_out

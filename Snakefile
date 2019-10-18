@@ -4,22 +4,9 @@ report: "report/workflow.rst"
 
 rule all:
 	input:
-		expand("fastp_out/{sample}_fastp.json", sample=IDS),
-		expand("kraken_out/{sample}_kraken2_report.txt", sample=IDS),
-		expand("skesa_out/{sample}_AIGHD.fasta", sample=IDS),
-		expand("mlst/{sample}.tsv", sample=IDS),
-		expand("coverage_out/{sample}.txt", sample=IDS),
-		expand("ska_fasta_out/{sample}.skf", sample=IDS),
-		"ska_align_out/alignment_variants.aln",
-		expand("abricate_out/{sample}.tsv", sample=IDS),
 		"abricate_summary_out/abricate_summary.tsv",
-		expand("quast_out/{sample}", sample=IDS),
 		"multiqc_fastp_out/fastp.html",
 		"multiqc_quast_out/quast.html",
-		"poppunk_out/K2",
-		"poppunk_out/K3",
-		"poppunk_out/K4",
-		"iqtree_out",
 		"summary/summary.csv",
 		"plots/tree.svg",
 		"poppunk_export.zip",
